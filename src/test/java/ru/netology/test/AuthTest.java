@@ -69,6 +69,5 @@ public class AuthTest {
         loginPage.authInvalidIfInvalidPassword(authInfo.getPassword());
         loginPage.clearPasswordField();
         loginPage.authInvalidIfInvalidPassword(authInfo.getPassword());
-        loginPage.loginButtonShouldBeInactive();
     }
 }

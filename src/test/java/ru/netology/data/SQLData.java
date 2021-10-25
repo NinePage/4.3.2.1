@@ -8,18 +8,18 @@ import java.sql.*;
 public class SQLData {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:mysql://192.168.99.100:3306/app", "user", "pass");
+                "jdbc:mysql://192.168.99.100:3306/app", "app", "pass");
     }
 
     public static void dropDataBase() {
         val runner = new QueryRunner();
-        val users = "DELETE FROM users";
         val verificationCodes = "DELETE FROM auth_codes";
+        val users = "DELETE FROM users";
         val cards = "DELETE FROM cards";
 
         try (Connection connection = getConnection()) {
-            runner.update(connection, users);
             runner.update(connection, verificationCodes);
+            runner.update(connection, users);
             runner.update(connection, cards);
 
         } catch (SQLException sqlException) {
